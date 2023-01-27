@@ -1,0 +1,278 @@
+@font-face {
+    font-family: 'Righteous';
+    src: url('Righteous-Regular.ttf')
+}
+
+@font-face {
+    font-family: 'ABZ';
+    src: url('ABeeZee-Regular.ttf');
+}
+
+* {
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --color1: #ffffff;
+    --color2: #ffffff;
+    --color3: #ffffff;
+    --color4: #ffffff;
+    --color5: #ffffff;
+}
+
+/* Remove Defaults */
+
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    height: 100vh;
+}
+
+#content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color1);
+}
+
+.banner {
+    font-size: 96px;
+    font-family: 'Righteous';
+    padding-left: 64px;
+    border-bottom: 4px solid black;
+    background-color: var(--color1);
+}
+
+.banner-text {
+    color: black;
+    transition: all 0.5s;
+    cursor: default;
+    text-shadow: -1px 1px var(--color2), -2px 2px var(--color3), -3px 3px var(--color4), -4px 4px var(--color5)
+}
+
+.banner-text:hover {
+    text-shadow: -2px 2px var(--color2), -4px 4px var(--color3), -6px 6px var(--color4), -8px 8px var(--color5);
+}
+
+#main-content {
+    display: flex;
+    flex: 1;
+}
+
+#sidebar {
+    width: 320px;
+    text-align: center;
+    border-right: 4px solid black;
+    height: 100%;
+    padding: 32px;
+    background-color: rgb(225, 235, 235);
+}
+
+#sidebar-title {
+    text-transform: capitalize;
+    font-size: 36px;
+    font-family: 'ABZ';
+    padding: 8px 32px;
+    border: 4px solid black;
+    font-weight: bolder;
+    background-color: var(--color1);
+    box-shadow: -3px 3px var(--color4), 3px -3px var(--color5)
+}
+
+#project-container {
+    padding: 32px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.plus-button {
+    display: flex;
+    align-items: center;
+    font-family: 'ABZ';
+    color: white;
+    font-weight: bolder;
+}
+
+.plus-button.new-project {
+    background-color: var(--color2);
+    font-size: 32px;
+    border: 2px solid black;
+    align-self: flex-start;
+}
+
+.new-project .display-text {
+    padding: 0px 32px;
+    text-shadow: 2px 2px black;
+}
+
+.plus-button .clickable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    transition: all 0.05s;
+    cursor: pointer;
+}
+
+.new-project .clickable {
+    width: 56px;
+}
+
+.new-project .clickable:hover {
+    background-color: black;
+}
+
+.new-project img {
+    transition: all 0.05s;
+    padding: 8px;
+    filter: invert(1) drop-shadow(2px 2px black);
+    height: 56px;
+}
+
+#project-container {
+    flex: 1;
+}
+
+.project-item {
+    width: 80%;
+    font-family: 'ABZ';
+    font-size: 24px;
+    border: 4px solid black;
+    transition: all 0.3s;
+}
+
+.project-item:hover {
+    box-shadow: -5px 5px var(--color4), 5px -5px var(--color5);
+}
+
+.project-item.unsaved {
+    position: relative;
+    box-shadow: none;
+}
+
+.project-item .save, .project-item .discard {
+    position: absolute;
+    left: 100%;
+    height: 64px;
+    border: 4px solid black;
+    padding: 8px;
+    top: -4px;
+    background-color: lightgreen;
+    cursor: pointer;
+}
+
+.project-item .discard {
+    top: 56px;
+    background-color: lightcoral;
+}
+
+.project-item > .header {
+    border-bottom: 4px solid black;
+    display: flex;
+    padding: 8px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    transition: all 0.5s;
+}
+
+.project-item.unsaved > .header {
+    background-color: white;
+}
+
+.project-item .header-left {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-item .project-title {
+    padding: 4px 4px 4px 16px;
+    font-size: 32px;
+    font-weight: 900;
+    color: white;
+}
+
+.project-item.unsaved .project-title {
+    color: black;
+}
+
+.project-item .header-left input {
+    border: 2px solid black;
+    color: black
+}
+
+.project-item .header-left input:focus {
+    outline: 4px solid var(--color4)
+}
+
+.project-item .plus-button {
+    background-color: black;
+    border: 2px solid black;
+}
+
+.add-tags img {
+    height: 48px;
+    filter: invert(1);
+    padding: 8px;
+}
+
+.add-tags .clickable:hover {
+    background-color: var(--color4);
+}
+
+.add-tags .display-text {
+    padding: 0px 8px;
+}
+
+.project-item > .body {
+    padding: 16px;
+}
+
+.task-list > .header {
+    border-bottom: 3px double black;
+    margin-bottom: 8px;
+}
+
+.project-item ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* New Task Button Styling */
+
+.new-task {
+    display: flex;
+    gap: 4px;
+}
+
+.new-task input {
+    border: 0px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+
+.new-task input::placeholder {
+    font-style: italic;
+}
+
+.new-task input:focus {
+    outline: 0px;
+}
