@@ -4,24 +4,29 @@ import component from "./baseComponents.js";
 let index = 0;
 
 export default {
-    addTemplate: () => {
+    addTemplate: (e) => {
         let projectArea = document.getElementById('project-container')
+        // Template already exists - return
         if (projectArea.querySelector('.unsaved')) {
             projectArea.querySelector('.unsaved').style.outline = "4px solid var(--color2)"
             setTimeout(() => {projectArea.querySelector('.unsaved').style.outline = ""},300)
             return
         }
+
         // Get template and insert
         let template = projectTemplate();
         template.dataset.index = index++;
         console.log(template.dataset.index);
         projectArea.insertBefore(template, projectArea.querySelector('.new-project'))
 
+        // Add event listeners to template
         document.querySelector('.unsaved .new-task button').addEventListener('click',addItem);
         document.querySelector('.unsaved .new-task input').addEventListener('keydown',addIfEnter);
         document.querySelector('.unsaved .discard').addEventListener('click',removeTemplate);
         document.querySelector('.unsaved .save').addEventListener('click',saveTemplate);
 
+        // Disable button
+        toggleAdding();
     },    
 }
 
@@ -64,10 +69,17 @@ function saveTemplate(e) {
 
     item.classList.remove('unsaved')
 
+    // Allow button to add projects again
+    toggleAdding();
+
 }
 
 function removeTemplate(e) {
+    toggleAdding();
     e.target.parentElement.remove();
 }
 
+function toggleAdding() {
+    document.querySelector('.new-project.plus-button').classList.toggle('disabled')
+}
 
