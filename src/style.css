@@ -97,6 +97,9 @@ body {
     height: 100%;
     padding: 32px;
     background-color: var(--accent1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 #sidebar-title {
@@ -108,6 +111,31 @@ body {
     font-weight: bolder;
     background-color: var(--primary-color);
     box-shadow: -3px 3px var(--accent3), 3px -3px var(--accent4)
+}
+
+#sidebar-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px
+}
+
+.sidebar-item {
+    font-family: 'ABZ';
+    background-color: white;
+    font-size: 30px;
+    padding: 8px;
+    background-color: var(--accent3-light);
+    box-shadow: -2px 2px var(--accent3), 2px -2px var(--accent4)
+}
+
+.sidebar-item:nth-child(2n) {
+    background-color: var(--accent4-light);
+}
+
+.sidebar-item:nth-child(1) {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    box-shadow: none;
 }
 
 #project-container {
@@ -204,7 +232,6 @@ body {
 
 .project-item.unsaved {
     position: relative;
-    box-shadow: none;
 }
 
 .project-item .save, .project-item .discard {

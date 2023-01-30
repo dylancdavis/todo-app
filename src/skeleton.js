@@ -18,15 +18,27 @@ const projectContainer = component.div({
     children: [ newProjectButton ]
 })
 
+const sideBarItems = component.div({
+    id: 'sidebar-items',
+    children: [
+        component.button({class: ['sidebar-item'], text: 'projects'}),
+        component.button({class: ['sidebar-item'], text: 'tags'}),
+        component.button({class: ['sidebar-item'], text: 'settings'})
+    ]
+})
+
 const sideBar = component.div({
     id: 'sidebar',
     children: [
         component.span({
             id: 'sidebar-title',
             text: 'sidebar'
-        })
+        }),
+        sideBarItems
     ]
 })
+
+
 
 const mainContent = component.div({
     id: 'main-content',
