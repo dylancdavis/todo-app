@@ -22,6 +22,8 @@
     --accent3: #ffffff;
     --accent4: #ffffff;
 
+    --primary-color-light: #ffffff;
+
     --accent1-light: #ffffff;
     --accent2-light: #ffffff;
     --accent3-light: #ffffff;
@@ -94,7 +96,7 @@ body {
     border-right: 4px solid var(--secondary-color);
     height: 100%;
     padding: 32px;
-    background-color: var(--accent1-light);
+    background-color: var(--accent1);
 }
 
 #sidebar-title {
@@ -113,6 +115,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    background-image: repeating-linear-gradient(45deg, var(--primary-color) 0, var(--primary-color) 5.5px, transparent 0, transparent 50%);
+    background-size: 13px 13px;
+    background-color: var(--primary-color-light);
+
 }
 
 .plus-button {
@@ -208,12 +214,19 @@ body {
     border: 4px solid var(--secondary-color);
     padding: 8px;
     top: -4px;
-    background-color: lightgreen;
+    background-color: var(--primary-color);
     cursor: pointer;
 }
 
 .project-item .discard {
     top: 56px;
+}
+
+.project-item .save:hover {
+    background-color: lightgreen;
+}
+
+.project-item .discard:hover {
     background-color: lightcoral;
 }
 

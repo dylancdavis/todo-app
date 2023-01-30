@@ -10,6 +10,7 @@ export default () => {
 
     document.body.style.setProperty('--primary-color', colors[0]);
     document.body.style.setProperty('--secondary-color', colors[1])
+    document.body.style.setProperty('--primary-color-light', chroma(colors[1]).set('hsl.l',(0.9)))
 
     for (let i=2;i<colors.length;i++) {
         document.body.style.setProperty(`--accent${i-1}`, colors[i]);
