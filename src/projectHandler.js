@@ -45,6 +45,7 @@ function saveTemplate(e) {
     let hl = item.querySelector('.header-left');
     let input = hl.querySelector('.project-title')
 
+    // do nothing if title empty
     if (input.value === '') {
         input.style.outline = '4px solid red'
         setTimeout(() => {input.style.outline = ''},500)

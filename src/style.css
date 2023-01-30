@@ -242,6 +242,28 @@ body {
 
 .project-item > .body {
     padding: 16px;
+    background-color: rgb(223, 235, 223);
+    transition: background-color 0.3s;
+    overflow: hidden;
+}
+
+.project-item:nth-child(3n-1) > .body {
+    background-color: rgb(223, 232, 235);
+}
+
+.project-item:nth-child(3n) > .body {
+    background-color: rgb(235, 229, 223);
+}
+
+.project-item > .body.collapsed {
+    transition: all 0s;
+    padding: 0px 16px;
+    height: 0px;
+}
+
+.project-item.unsaved > .body {
+    background-color: white;
+    height: auto;
 }
 
 .task-list > .header {
@@ -267,6 +289,7 @@ body {
     border: 0px;
     border-bottom: 1px solid black;
     font-size: 20px;
+    background-color: inherit;
 }
 
 .new-task input::placeholder {
