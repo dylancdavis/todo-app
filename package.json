@@ -18,6 +18,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
+    "chroma-js": "^2.4.2",
     "coolors-io": "^1.1.1"
   }
 }
