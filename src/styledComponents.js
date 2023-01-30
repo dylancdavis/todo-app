@@ -84,26 +84,28 @@ function projectItemBody() { return component.div({
         class: ['body'],
         children: [
             component.div({
-                class: ['task-list'],
+                class: ['task-container'],
                 children: [
                     component.div({class: ['header'], text: 'Task List'}),
-                    component.ul({class: ['list']}),
-                    component.div({
-                        class: ['new-task'],
-                        children: [
-                            component.button({text: '+'}),
-                            (() => {
-                                let ret = document.createElement('input')
-                                ret.setAttribute('type','text')
-                                ret.setAttribute('placeholder','add a task...')
-                                return ret
-                            })()
-                        ]
-                    })
-
-
+                    taskList()
                 ]
             })
+        ]
+    })
+}
+
+function taskList() {
+    return component.div({
+        class: ['task-list'],
+        children: [
+            component.button({class: ['add-task'], text: '+'}),
+            (() => {
+                let ret = document.createElement('input')
+                ret.classList.add('add-task')
+                ret.setAttribute('type','text')
+                ret.setAttribute('placeholder','add a task...')
+                return ret
+            })()
         ]
     })
 }

@@ -20,8 +20,8 @@ export default {
         projectArea.insertBefore(template, projectArea.querySelector('.new-project'))
 
         // Add event listeners to template
-        document.querySelector('.unsaved .new-task button').addEventListener('click',addItem);
-        document.querySelector('.unsaved .new-task input').addEventListener('keydown',addIfEnter);
+        document.querySelector('.unsaved .task-list button').addEventListener('click',addItem);
+        document.querySelector('.unsaved .task-list input').addEventListener('keydown',addIfEnter);
         document.querySelector('.unsaved .discard').addEventListener('click',removeTemplate);
         document.querySelector('.unsaved .save').addEventListener('click',saveTemplate);
 
@@ -31,12 +31,28 @@ export default {
 }
 
 function addItem(e) {
+    console.log(e);
     let t = e.target;
     console.log(t);
-    let list = t.parentElement.parentElement.querySelector('ul');
-    let input = t.parentElement.querySelector('input')
-    if (input.value !== '') list.appendChild(component.li({text: input.value}))
+    let list = t.parentElement;
+    let input = t.parentElement.querySelector('input.add-task')
+    let btn = t.parentElement.querySelector('button.add-task')
+    if (input.value !== '') {
+        // grid should handle sorting.
+        list.insertBefore(checkboxButton(),btn)
+        list.insertBefore(component.div({class: ['display-text'], text: input.value}),btn)
+        list.insertBefore(component.div({class: ['task-buttons'], text: 'edit // delete'}),btn)
+    } 
     input.value = ''
+}
+
+function checkboxButton() {
+    let ret = component.button({class: ['checkbox']})
+    ret.addEventListener('click',() => {
+        ret.classList.toggle('completed')
+        ret.nextSibling.classList.toggle('completed')
+    })
+    return ret;
 }
 
 function addIfEnter(e) {

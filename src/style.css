@@ -146,7 +146,6 @@ body {
     background-image: repeating-linear-gradient(45deg, var(--primary-color) 0, var(--primary-color) 5.5px, transparent 0, transparent 50%);
     background-size: 13px 13px;
     background-color: var(--primary-color-light);
-
 }
 
 .plus-button {
@@ -164,6 +163,10 @@ body {
     font-size: 32px;
     border: 2px solid var(--secondary-color);
     align-self: flex-start;
+}
+
+.plus-button.new-project:nth-child(2n) {
+    background-color: var(--accent4);
 }
 
 .new-project .display-text {
@@ -189,6 +192,10 @@ body {
 /* New Project (Disabled) */
 
 .plus-button.disabled {
+    background-color: var(--primary-color);
+}
+
+.plus-button.disabled:nth-child(2) {
     background-color: var(--primary-color);
 }
 
@@ -347,16 +354,39 @@ body {
     height: auto;
 }
 
-.task-list > .header {
+.task-container > .header {
     border-bottom: 3px double var(--secondary-color);
     margin-bottom: 8px;
 }
 
-.project-item ul {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.project-item .task-list {
+    display: inline-grid;
     margin-bottom: 8px;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 8px;
+    place-items: center;
+}
+
+.task-list .checkbox {
+    width: 12px;
+    height: 12px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.task-list .checkbox.completed {
+    background-color: black;
+}
+
+.task-list .display-text {
+    justify-self: start;
+    font-size: 20px;
+    overflow-wrap: break-word;
+}
+
+.task-list .display-text.completed {
+    color: grey;
+    text-decoration: line-through;
 }
 
 /* New Task Button Styling */
@@ -366,17 +396,32 @@ body {
     gap: 4px;
 }
 
-.new-task input {
+input.add-task {
+    font-family: 'ABZ';
     border: 0px;
     border-bottom: 1px solid var(--secondary-color);
     font-size: 20px;
     background-color: inherit;
+    justify-self: start;
 }
 
-.new-task input::placeholder {
+input.add-task::placeholder {
     font-style: italic;
 }
 
-.new-task input:focus {
+input.add-task:focus {
     outline: 0px;
+}
+
+.task-buttons {
+    visibility: hidden;
+    transition-delay: 2s;
+}
+
+.task-buttons:hover {
+    visibility: visible;
+}
+
+.task-list .display-text:hover + .task-buttons {
+    visibility: visible;
 }
