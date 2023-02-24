@@ -1,20 +1,20 @@
-import component from "./baseComponents.js";
-import './style.css'
-import skeleton from "./skeleton";
-import colorHandler from "./colorHandler.js";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import colorHandler from "./logic/colorHandler.js";
 
-// Initialize Colors
-colorHandler();
+colorHandler()
 
-// Build Website Skeleton
-document.body.appendChild(component.div({id: 'content', children: skeleton }))
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-// Add New project functionality
-import projectHandler from "./projectHandler";
-
-// Add functionality to newProjectButton
-const newProjectButton = document.querySelector('.new-project').querySelector('.clickable');
-newProjectButton.addEventListener('click',projectHandler.addTemplate);
-
-// Start with a template on the page
-projectHandler.addTemplate();
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
