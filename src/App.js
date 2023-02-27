@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='content'>
       <div className='banner'>
-        <span className='banner-text'>coretask</span>
+        <span className='banner-text'>CoreTask</span>
       </div>
       <MainContent selectedTab={selectedTab} />
     </div>
