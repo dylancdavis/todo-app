@@ -2,6 +2,7 @@ import saveIcon from '../assets/check.png'
 import discardIcon from '../assets/cross.png'
 import { useState } from "react"
 import ProjectBody from "./projectBody"
+import ProjectHeader from './projectHeader'
 
 const NewProjectForm = ({onSave, onDiscard}) => {
 
@@ -30,20 +31,12 @@ const NewProjectForm = ({onSave, onDiscard}) => {
 
 	return (
 		<div className='project-item unsaved'>
-			<ProjectHeader title={title} handleTitleChange={onTitleChange} />
+			<ProjectHeader >
+				<Title title={title} handleTitleChange={onTitleChange} />
+			</ProjectHeader>
 			<ProjectBody tasks={tasks} addTask={addTask} />
 			<SaveButton onSave={handleSave} />
 			<DiscardButton onDiscard={onDiscard} />
-		</div>
-	)
-}
-
-const ProjectHeader = ({title, handleTitleChange}) => {
-	return (
-		<div className='header'>
-			<div className='header-left'>
-				<Title title={title} handleTitleChange={handleTitleChange} />
-			</div>
 		</div>
 	)
 }
@@ -57,6 +50,7 @@ const Title = ({title, handleTitleChange}) => {
 		value={title}
 		onChange={handleTitleChange}></input>
 }
+
 const SaveButton = ({onSave}) => {
 
 	return (<img 

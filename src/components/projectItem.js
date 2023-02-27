@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import ProjectBody from "./projectBody"
+import ProjectHeader from "./projectHeader"
 
 const baseURL = 'http://localhost:3001'
 
@@ -16,25 +17,14 @@ const ProjectItem = ({id, title, initTasks}) => {
 
 	return (
 		<div className='project-item'>
-			<ProjectHeader title={title} />
+			<ProjectHeader>
+				<Title title={title}></Title>
+			</ProjectHeader>
 			<ProjectBody tasks={tasks} addTask={addTask} />
 		</div>
 	)
 }
 
-const ProjectHeader = ({title}) => {
-	return (
-		<div className='header'>
-			<div className='header-left'>
-				<Title title={title} />
-			</div>
-		</div>
-	)
-}
-
-const Title = ({title}) => {
-
-	return <div className='project-title'>{title}</div>
-}
+const Title = ({title}) => <div className='project-title'>{title}</div>
 
 export default ProjectItem
