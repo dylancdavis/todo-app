@@ -1,17 +1,17 @@
 import { useState } from "react"
 
-const ProjectBody = ({tasks, addTask}) => {
+const ProjectBody = ({tasks, addTask, toggleTask}) => {
 	return (
 		<div className='body'>
 			<div className='task-container'>
 				<div className='header'>Task List</div>
-				<TaskList tasks={tasks} addTask={addTask} />
+				<TaskList tasks={tasks} addTask={addTask} toggleTask={toggleTask} />
 			</div>
 		</div>
 	)
 }
 
-const TaskList = ({tasks, addTask}) => {
+const TaskList = ({tasks, addTask, toggleTask}) => {
 
 	const [newTaskText, setNewTaskText] = useState('')
 
@@ -30,7 +30,7 @@ const TaskList = ({tasks, addTask}) => {
 
 	return (
 		<div className='task-list'>
-			{tasks.map(t => <Task text={t.text} completed={t.completed} />)}
+			{tasks.map(t => <Task text={t.text} completed={t.completed} toggleTask={toggleTask} />)}
 			<button className='add-task' onClick={saveNewTask}>+</button>
 			<input 
 				className='add-task' 
@@ -42,15 +42,20 @@ const TaskList = ({tasks, addTask}) => {
 	)
 }
 
-const Task = ({text, completed}) => {
+const Task = ({text, completed, toggleTask}) => {
+
+	const onToggle = () => {
+		toggleTask(text)
+	}
+
 	return completed
 		? (<>
-				<button className='checkbox completed'></button>
+				<button className='checkbox completed' onClick={onToggle}></button>
 				<span className='display-text completed'>{text}</span>
 				<div>edit stuff</div>
 			</>)
 		: (<>
-				<button className='checkbox'></button>
+				<button className='checkbox' onClick={onToggle}></button>
 				<span className='display-text'>{text}</span>
 				<div>edit stuff</div>
 			</>)

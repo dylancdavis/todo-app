@@ -24,7 +24,7 @@ const ProjectItem = ({id, title, onDelete, tasklist}) => {
 	}
 
 	const toggleTask = async text => {
-		const newTaskList = tasks.filter(t => {
+		const newTaskList = tasks.map(t => {
 			return t.text === text
 				? {...t, completed: !t.completed}
 				: t
@@ -42,7 +42,7 @@ const ProjectItem = ({id, title, onDelete, tasklist}) => {
 			<ProjectHeader>
 				<Title title={title}></Title>
 			</ProjectHeader>
-			<ProjectBody tasks={tasks} addTask={addTask} />
+			<ProjectBody tasks={tasks} addTask={addTask} toggleTask={toggleTask} />
 			<DiscardButton onDiscard={onDiscard} />
 		</div>
 	)

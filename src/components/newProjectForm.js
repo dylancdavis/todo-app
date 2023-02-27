@@ -28,12 +28,23 @@ const NewProjectForm = ({onSave, onDiscard}) => {
 		setTasks(tasks.concat(newTask))
 	}
 
+	const toggleTask = text => {
+		console.log('success')
+		
+		const newTaskList = tasks.map(t => {
+			return t.text === text
+				? {...t, completed: !t.completed}
+				: t
+		})
+		setTasks(newTaskList)
+	}
+
 	return (
 		<div className='project-item unsaved'>
 			<ProjectHeader >
 				<Title title={title} handleTitleChange={onTitleChange} />
 			</ProjectHeader>
-			<ProjectBody tasks={tasks} addTask={addTask} />
+			<ProjectBody tasks={tasks} addTask={addTask} toggleTask={toggleTask} />
 			<SaveButton onSave={handleSave} />
 			<DiscardButton onDiscard={onDiscard} />
 		</div>
