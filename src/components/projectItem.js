@@ -1,68 +1,39 @@
 import PlusButton from "./plusButton"
-
 import saveIcon from '../assets/check.png'
 import discardIcon from '../assets/cross.png'
-import plusIcon from '../assets/plus.png'
+import { useState } from "react"
+import ProjectBody from "./projectBody"
 
-const ProjectItem = () => {
+const ProjectItem = ({title, initTasks}) => {
+
+	const [tasks, addTasks] = useState([])
+
 	return (
-		<div className='project-item unsaved'>
-			<ProjectHeader />
-			<ProjectBody />
-			<SaveButton />
-			<DiscardButton />
+		<div className='project-item'>
+			<ProjectHeader title={title} />
+			<ProjectBody tasks={tasks} />
 		</div>
 	)
 }
 
-const ProjectHeader = () => {
+const ProjectHeader = ({title}) => {
 	return (
 		<div className='header'>
 			<div className='header-left'>
-				<Title />
+				<Title title={title} />
 				<AddTagsButton />
 			</div>
 		</div>
 	)
 }
 
-const Title = () => {
-	return <input type='text' placeholder='Project Name' className='project-title'></input>
+const Title = ({title}) => {
+
+	return <div className='project-title'>{title}</div>
 }
 
 const AddTagsButton = () => {
 	return <PlusButton otherClasses='add-tags' text='add-tags' />
-}
-
-const ProjectBody = () => {
-	return (
-		<div className='body'>
-			<div className='task-container'>
-				<div className='header'>Task List</div>
-				<TaskList />
-			</div>
-		</div>
-	)
-}
-
-const TaskList = () => {
-	return (
-		<div className='task-list'>
-			<button className='add-task'>+</button>
-			<input className='add-task' type='text' placeholder='add a task...'></input>
-		</div>
-	)
-
-}
-
-const SaveButton = () => {
-	return (<img className='save' src={saveIcon} alt='save icon'></img>)
-}
-
-const DiscardButton = () => {
-	return (
-			<img className='discard' src={discardIcon}  alt='discard icon'></img>
-	)
 }
 
 export default ProjectItem

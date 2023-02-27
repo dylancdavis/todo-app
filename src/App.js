@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import PlusButton from './components/plusButton';
-import ProjectItem from './components/projectItem'
+import ProjectContainer from './components/projectContainer'
 
 const sidebarItemNames = ['projects', 'tags', 'settings']
 
@@ -25,18 +24,6 @@ const MainContent = ({selectedTab}) => (
     {selectedTab === 'projects' && <ProjectContainer />}
   </div>)
 
-const ProjectContainer = () => {
-
-  // TODO: Use state for projecs
-
-  return (
-    <div id='project-container'>
-      <ProjectItem />
-      <NewProjectButton />
-    </div>
-  )
-}
-
 const SidebarItems = () => {
   return (
     <div id='sidebar-items'>
@@ -52,10 +39,6 @@ const Sidebar = () => {
       <SidebarItems />
     </div>
   )
-}
-
-const NewProjectButton = () => {
-  return(<PlusButton otherClasses='new-project disabled' text='add new project'/>)
 }
 
 export default App;
