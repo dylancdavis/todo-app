@@ -6,7 +6,7 @@ import discardIcon from '../assets/cross.png'
 
 const baseURL = 'http://localhost:3001'
 
-const ProjectItem = ({id, title, initTasks}) => {
+const ProjectItem = ({id, title, initTasks, onDelete}) => {
 
 	const [tasks, setTasks] = useState(initTasks)
 
@@ -16,9 +16,8 @@ const ProjectItem = ({id, title, initTasks}) => {
 		setTasks(newTaskList)
 	}
 
-	const onDiscard = () => {
-		console.log(`discard ${id}`)
-		
+	const onDiscard = async () => {
+		onDelete(id)
 	}
 
 	return (

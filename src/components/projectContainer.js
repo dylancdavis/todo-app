@@ -26,6 +26,11 @@ const ProjectContainer = () => {
     setNewProject(false)
   }
 
+  const onProjectDelete = async id => {
+    await axios.delete(`${baseURL}/projects/${id}`)
+    setProjects(projects.filter(p => p.id !== id))
+  }
+
   // use effect to get projects here...
 
   useEffect(() => {
@@ -37,7 +42,7 @@ const ProjectContainer = () => {
 
   return (
     <div id='project-container'>
-      {projects.map(p => <ProjectItem key={p.id} id={p.id} title={p.title} initTasks={p.tasks} />)}
+      {projects.map(p => <ProjectItem key={p.id} id={p.id} title={p.title} initTasks={p.tasks} onDelete={onProjectDelete} />)}
       {newProject && <NewProjectForm onSave={onProjectSave} onDiscard={onProjectDiscard} />}
       <NewProjectButton enabled={newProject} onClick={openProjectForm} />
 
