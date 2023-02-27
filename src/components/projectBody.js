@@ -44,14 +44,16 @@ const TaskList = ({tasks, addTask}) => {
 
 const Task = ({text, completed}) => {
 	return completed
-		? (<div>
+		? (<>
 				<button className='checkbox completed'></button>
-				<span className='completed'>{text}</span>
-			</div>)
-		: (<div>
+				<span className='display-text completed'>{text}</span>
+				<div>edit stuff</div>
+			</>)
+		: (<>
 				<button className='checkbox'></button>
-				<span>{text}</span>
-			</div>)
+				<span className='display-text'>{text}</span>
+				<div>edit stuff</div>
+			</>)
 }
 
 export default ProjectBody
