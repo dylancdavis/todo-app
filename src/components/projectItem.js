@@ -1,17 +1,19 @@
 import PlusButton from "./plusButton"
-import saveIcon from '../assets/check.png'
-import discardIcon from '../assets/cross.png'
 import { useState } from "react"
 import ProjectBody from "./projectBody"
 
 const ProjectItem = ({title, initTasks}) => {
 
-	const [tasks, addTasks] = useState([])
+	const [tasks, setTasks] = useState(initTasks)
+
+	const addTask = newTask => {
+		setTasks(tasks.concat(newTask))
+	}
 
 	return (
 		<div className='project-item'>
 			<ProjectHeader title={title} />
-			<ProjectBody tasks={tasks} />
+			<ProjectBody tasks={tasks} addTask={addTask} />
 		</div>
 	)
 }

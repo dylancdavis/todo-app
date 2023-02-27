@@ -5,7 +5,7 @@ import ProjectItem from './projectItem'
 
 const ProjectContainer = () => {
 
-  const [projects, setProjects]  = useState([{id: '1', title: 'My Project'}])
+  const [projects, setProjects]  = useState([{id: '1', title: 'My Project', tasks: []}])
   const [newProject, setNewProject]  = useState(false)
 
   const openProjectForm = () => {
@@ -25,7 +25,7 @@ const ProjectContainer = () => {
 
   return (
     <div id='project-container'>
-      {projects.map(p => <ProjectItem key={p.id} title={p.title} />)}
+      {projects.map(p => <ProjectItem key={p.id} title={p.title} initTasks={p.tasks} />)}
       {newProject && <NewProjectForm onSave={onProjectSave} onDiscard={onProjectDiscard} />}
       <NewProjectButton enabled={newProject} onClick={openProjectForm} />
 
