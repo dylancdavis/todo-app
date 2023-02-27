@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import NewProjectForm from './newProjectForm';
 import PlusButton from './plusButton';
 import ProjectItem from './projectItem'
+import axios from 'axios'
 
 const ProjectContainer = () => {
 
-  const [projects, setProjects]  = useState([{id: '1', title: 'My Project', tasks: []}])
+  const [projects, setProjects]  = useState([])
   const [newProject, setNewProject]  = useState(false)
 
   const openProjectForm = () => {
@@ -22,6 +23,13 @@ const ProjectContainer = () => {
   }
 
   // use effect to get projects here...
+
+  useEffect(() => {
+    (async () => {
+      const getProjects = await axios.get('http://localhost:3001/projects')
+      setProjects(getProjects.data)
+    })()
+  }, [])
 
   return (
     <div id='project-container'>

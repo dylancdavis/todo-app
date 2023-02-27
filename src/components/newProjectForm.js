@@ -1,4 +1,3 @@
-import PlusButton from "./plusButton"
 import saveIcon from '../assets/check.png'
 import discardIcon from '../assets/cross.png'
 import { useState } from "react"
