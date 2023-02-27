@@ -31,13 +31,17 @@ const TaskList = ({tasks, addTask, toggleTask}) => {
 	return (
 		<div className='task-list'>
 			{tasks.map(t => <Task text={t.text} completed={t.completed} toggleTask={toggleTask} />)}
-			<button className='add-task' onClick={saveNewTask}>+</button>
-			<input 
-				className='add-task' 
-				type='text' 
-				placeholder='add a task...'
-				value={newTaskText}
-				onChange={onNewTaskTextChange}></input>
+			<div className='task-item'>
+				<button className='add-task' onClick={saveNewTask}>+</button>
+				<input 
+					className='add-task' 
+					type='text' 
+					placeholder='add a task...'
+					value={newTaskText}
+					onChange={onNewTaskTextChange}>
+				</input>
+			</div>
+
 		</div>
 	)
 }
@@ -48,17 +52,13 @@ const Task = ({text, completed, toggleTask}) => {
 		toggleTask(text)
 	}
 
-	return completed
-		? (<>
-				<button className='checkbox completed' onClick={onToggle}></button>
-				<span className='display-text completed'>{text}</span>
-				<div>edit stuff</div>
-			</>)
-		: (<>
-				<button className='checkbox' onClick={onToggle}></button>
-				<span className='display-text'>{text}</span>
-				<div>edit stuff</div>
-			</>)
+	const extraClass = completed ? 'completed' : ''
+
+	return (<div className='task-item'>
+						<button className={`checkbox ${extraClass}`} onClick={onToggle}></button>
+						<span className={`display-text ${extraClass}`}>{text}</span>
+						<button className='delete'>X</button>
+					</div>)
 }
 
 export default ProjectBody

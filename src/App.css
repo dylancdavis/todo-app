@@ -387,29 +387,50 @@ body {
   margin-bottom: 8px;
 }
 
-.project-item .task-list {
-  display: inline-grid;
-  margin-bottom: 8px;
-  grid-template-columns: repeat(3, auto);
-  grid-gap: 8px;
-  place-items: center;
+.task-list {
+  display: flex;
+  flex-direction: column;
 }
 
-.task-list .checkbox {
-  width: 12px;
-  height: 12px;
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 1px 8px;
+}
+
+.task-item .checkbox {
+  width: 16px;
+  height: 16px;
   border: 2px solid black;
   background-color: white;
 }
 
-.task-list .checkbox.completed {
+.task-item .checkbox.completed {
   background-color: black;
 }
 
-.task-list .display-text {
-  justify-self: start;
+.task-item .display-text {
   font-size: 20px;
   overflow-wrap: break-word;
+  flex: 1;
+}
+
+.task-item .delete {
+  visibility: hidden;
+}
+
+.task-item:hover .delete {
+  visibility: visible;
+}
+
+.task-item:hover:not(:last-child) {
+  background: #00000012;
+}
+
+.task-item:focus {
+  outline: 1px solid var(--accent1-light)
 }
 
 .task-list .display-text.completed {

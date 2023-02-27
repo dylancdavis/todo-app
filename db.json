@@ -1,50 +1,15 @@
 {
   "projects": [
     {
-      "id": 1,
-      "title": "My First Project",
-      "tasks": 1
-    },
-    {
-      "title": "efsefsef",
-      "tasks": 2,
-      "id": 2
+      "title": "Some Project",
+      "tasks": 1,
+      "id": 1
     }
   ],
   "tasklists": [
     {
-      "tasks": [
-        {
-          "text": "First Task",
-          "completed": false
-        },
-        {
-          "text": "Second Task",
-          "completed": false
-        },
-        {
-          "text": "Third Task",
-          "completed": false
-        },
-        {
-          "text": "Stuff",
-          "completed": true
-        },
-        {
-          "text": "First Task",
-          "completed": true
-        }
-      ],
+      "tasks": [],
       "id": 1
-    },
-    {
-      "tasks": [
-        {
-          "text": "efsefsef",
-          "completed": false
-        }
-      ],
-      "id": 2
     }
   ]
 }
