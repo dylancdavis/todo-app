@@ -4,6 +4,8 @@ import PlusButton from './plusButton';
 import ProjectItem from './projectItem'
 import axios from 'axios'
 
+const baseURL = 'http://localhost:3001'
+
 const ProjectContainer = () => {
 
   const [projects, setProjects]  = useState([])
@@ -13,8 +15,10 @@ const ProjectContainer = () => {
     setNewProject(true)
   }
 
-  const onProjectSave = (newProject) => {
-    setProjects(projects.concat(newProject))
+  const onProjectSave = async (newProject) => {
+    const response = await axios.post(`${baseURL}/projects`, newProject)
+
+    setProjects(projects.concat(response.data))
     setNewProject(false)
   }
 
@@ -26,14 +30,14 @@ const ProjectContainer = () => {
 
   useEffect(() => {
     (async () => {
-      const getProjects = await axios.get('http://localhost:3001/projects')
+      const getProjects = await axios.get(`${baseURL}/projects`)
       setProjects(getProjects.data)
     })()
   }, [])
 
   return (
     <div id='project-container'>
-      {projects.map(p => <ProjectItem key={p.id} title={p.title} initTasks={p.tasks} />)}
+      {projects.map(p => <ProjectItem key={p.id} id={p.id} title={p.title} initTasks={p.tasks} />)}
       {newProject && <NewProjectForm onSave={onProjectSave} onDiscard={onProjectDiscard} />}
       <NewProjectButton enabled={newProject} onClick={openProjectForm} />
 

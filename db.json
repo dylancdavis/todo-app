@@ -1,14 +1,30 @@
 {
-	"projects": [
-		{
-			"id": 1,
-			"title": "My To-Do List",
-			"tasks": []
-		},
-		{
-			"id": 2,
-			"title": "Gardening",
-			"tasks": []
-		}
-	]
+  "projects": [
+    {
+      "title": "My To-Do List",
+      "tasks": [],
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "Gardening",
+      "tasks": [
+        {
+          "text": "pull weeds"
+        },
+        {
+          "text": "remove pests",
+          "completed": true
+        },
+        {
+          "text": "harvest peppers"
+        }
+      ]
+    },
+    {
+      "title": "Whee",
+      "tasks": [],
+      "id": 3
+    }
+  ]
 }

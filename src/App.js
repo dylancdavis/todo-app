@@ -9,7 +9,7 @@ function App() {
   const [selectedTab, setSelectedTab] = useState('projects')
 
   return (
-    <div className='content'>
+    <div id='content'>
       <div className='banner'>
         <span className='banner-text'>CoreTask</span>
       </div>

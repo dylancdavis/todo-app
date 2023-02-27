@@ -1,12 +1,17 @@
+import axios from "axios"
 import { useState } from "react"
 import ProjectBody from "./projectBody"
 
-const ProjectItem = ({title, initTasks}) => {
+const baseURL = 'http://localhost:3001'
+
+const ProjectItem = ({id, title, initTasks}) => {
 
 	const [tasks, setTasks] = useState(initTasks)
 
-	const addTask = newTask => {
-		setTasks(tasks.concat(newTask))
+	const addTask = async newTask => {
+		const newTaskList = tasks.concat(newTask)
+		await axios.put(`${baseURL}/projects/${id}`, {title: title, tasks: newTaskList})
+		setTasks(newTaskList)
 	}
 
 	return (
