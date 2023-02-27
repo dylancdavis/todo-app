@@ -195,7 +195,7 @@ body {
   background-color: var(--primary-color);
 }
 
-.plus-button.disabled:nth-child(2) {
+.plus-button.disabled:nth-child(2n) {
   background-color: var(--primary-color);
 }
 
