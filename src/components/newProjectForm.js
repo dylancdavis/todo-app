@@ -17,7 +17,6 @@ const NewProjectForm = ({onSave, onDiscard}) => {
 		if (!title) return
 
 		const projectToSave = {
-				id: Math.floor(Math.random(10000)),
 				title: title,
 				tasks: tasks
 		}

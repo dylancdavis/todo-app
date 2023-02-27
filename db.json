@@ -1,10 +1,28 @@
 {
   "projects": [
     {
-      "title": "My To-Do List",
+      "id": 1,
+      "title": "My First Project",
+      "tasks": 1
+    }
+  ],
+  "tasklists": [
+    {
       "tasks": [
         {
-          "text": "fesfef",
+          "text": "First Task",
+          "completed": true
+        },
+        {
+          "text": "Second Task",
+          "completed": false
+        },
+        {
+          "text": "Third Task",
+          "completed": false
+        },
+        {
+          "text": "Stuff",
           "completed": false
         }
       ],
