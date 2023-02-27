@@ -240,7 +240,7 @@ body {
   box-shadow: -5px 5px var(--accent3), 5px -5px var(--accent4);
 }
 
-.project-item.unsaved {
+.project-item {
   position: relative;
 }
 
@@ -256,7 +256,25 @@ body {
 }
 
 .project-item .discard {
-  top: 56px;
+  position: absolute;
+  left: 100%;
+  height: 64px;
+  border: 4px solid var(--secondary-color);
+  padding: 8px;
+  top: -4px;
+  background-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.project-item .discard {
+  top: -4px;
+  left: 94%;
+  z-index: 0;
+  transition: all 0.5s;
+}
+
+.project-item:hover .discard {
+  left: 100%;
 }
 
 .project-item .save:hover {
@@ -275,6 +293,9 @@ body {
   align-items: center;
   background-color: var(--secondary-color);
   transition: all 0.5s;
+
+  position: relative;
+  z-index: 1;
 }
 
 .project-item.unsaved > .header {
