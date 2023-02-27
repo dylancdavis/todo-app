@@ -1,0 +1,14 @@
+{
+	"projects": [
+		{
+			"id": 1,
+			"title": "My To-Do List",
+			"tasks": []
+		},
+		{
+			"id": 2,
+			"title": "Gardening",
+			"tasks": []
+		}
+	]
+}
