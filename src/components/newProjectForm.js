@@ -44,7 +44,6 @@ const ProjectHeader = ({title, handleTitleChange}) => {
 		<div className='header'>
 			<div className='header-left'>
 				<Title title={title} handleTitleChange={handleTitleChange} />
-				<AddTagsButton />
 			</div>
 		</div>
 	)
@@ -59,11 +58,6 @@ const Title = ({title, handleTitleChange}) => {
 		value={title}
 		onChange={handleTitleChange}></input>
 }
-
-const AddTagsButton = () => {
-	return <PlusButton otherClasses='add-tags' text='add-tags' />
-}
-
 const SaveButton = ({onSave}) => {
 
 	return (<img 
