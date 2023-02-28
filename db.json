@@ -1,14 +1,23 @@
 {
   "projects": [
     {
-      "title": "Some Project",
+      "title": "Name",
       "tasks": 1,
       "id": 1
     }
   ],
   "tasklists": [
     {
-      "tasks": [],
+      "tasks": [
+        {
+          "text": "Uh oh",
+          "completed": false
+        },
+        {
+          "text": "Start with that",
+          "completed": false
+        }
+      ],
       "id": 1
     }
   ]

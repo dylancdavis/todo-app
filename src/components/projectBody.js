@@ -1,17 +1,17 @@
 import { useState } from "react"
 
-const ProjectBody = ({tasks, addTask, toggleTask}) => {
+const ProjectBody = props => {
 	return (
 		<div className='body'>
 			<div className='task-container'>
 				<div className='header'>Task List</div>
-				<TaskList tasks={tasks} addTask={addTask} toggleTask={toggleTask} />
+				<TaskList {...props} />
 			</div>
 		</div>
 	)
 }
 
-const TaskList = ({tasks, addTask, toggleTask}) => {
+const TaskList = ({tasks, addTask, toggleTask, editTask}) => {
 
 	const [newTaskText, setNewTaskText] = useState('')
 
@@ -30,7 +30,7 @@ const TaskList = ({tasks, addTask, toggleTask}) => {
 
 	return (
 		<div className='task-list'>
-			{tasks.map(t => <Task text={t.text} completed={t.completed} toggleTask={toggleTask} />)}
+			{tasks.map(t => <Task text={t.text} completed={t.completed} toggleTask={toggleTask} editTask={editTask} />)}
 			<div className='task-item'>
 				<button className='add-task' onClick={saveNewTask}>+</button>
 				<input 
@@ -46,17 +46,44 @@ const TaskList = ({tasks, addTask, toggleTask}) => {
 	)
 }
 
-const Task = ({text, completed, toggleTask}) => {
+const Task = ({text, completed, toggleTask, editTask}) => {
+
+	const [editing, setEditing] = useState(false)
+	const [editText, setEditText] = useState(text)
 
 	const onToggle = () => {
 		toggleTask(text)
+	}
+
+	const onEditChange = e => {
+		setEditText(e.target.value)
+	}
+
+	const toggleEditing = () => {
+		setEditing(!editing)
+	}
+
+	const saveText = () => {
+		editTask(text, editText)
+		setEditing(false)
 	}
 
 	const extraClass = completed ? 'completed' : ''
 
 	return (<div className='task-item'>
 						<button className={`checkbox ${extraClass}`} onClick={onToggle}></button>
-						<span className={`display-text ${extraClass}`}>{text}</span>
+						{editing
+							? (<div className='display-text'>
+									<input
+										className='edit-text' 
+										type='text'
+										placeholder={text}
+										value={editText}
+										onChange={onEditChange}
+									/>
+									<button className='edit-button' onClick={saveText}> ✓</button>
+								</div>)
+							: <span className={`display-text ${extraClass}`} onClick={toggleEditing}>{text}</span>}
 						<button className='delete'>X</button>
 					</div>)
 }

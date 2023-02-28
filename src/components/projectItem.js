@@ -33,6 +33,17 @@ const ProjectItem = ({id, title, onDelete, tasklist}) => {
 		setTasks(newTaskList)
 	}
 
+	const editTask = async (oldText, newText) => {
+		if (!newText) return
+		const newTaskList = tasks.map(t => {
+			return t.text === oldText
+				? {...t, text: newText}
+				: t
+		})
+		await axios.put(`${baseURL}/tasklists/${tasklist}`, {tasks: newTaskList})
+		setTasks(newTaskList)
+	}
+
 	const onDiscard = async () => {
 		onDelete(id, tasklist)
 	}
@@ -42,7 +53,7 @@ const ProjectItem = ({id, title, onDelete, tasklist}) => {
 			<ProjectHeader>
 				<Title title={title}></Title>
 			</ProjectHeader>
-			<ProjectBody tasks={tasks} addTask={addTask} toggleTask={toggleTask} />
+			<ProjectBody tasks={tasks} addTask={addTask} toggleTask={toggleTask} editTask={editTask} />
 			<DiscardButton onDiscard={onDiscard} />
 		</div>
 	)
