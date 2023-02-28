@@ -11,7 +11,7 @@ const ProjectBody = props => {
 	)
 }
 
-const TaskList = ({tasks, addTask, toggleTask, editTask}) => {
+const TaskList = ({tasks, addTask, toggleTask, editTask, removeTask}) => {
 
 	const [newTaskText, setNewTaskText] = useState('')
 
@@ -30,7 +30,7 @@ const TaskList = ({tasks, addTask, toggleTask, editTask}) => {
 
 	return (
 		<div className='task-list'>
-			{tasks.map(t => <Task text={t.text} completed={t.completed} toggleTask={toggleTask} editTask={editTask} />)}
+			{tasks.map(t => <Task text={t.text} completed={t.completed} toggleTask={toggleTask} editTask={editTask} removeTask={removeTask} />)}
 			<div className='task-item'>
 				<button className='add-task' onClick={saveNewTask}>+</button>
 				<input 
@@ -46,7 +46,7 @@ const TaskList = ({tasks, addTask, toggleTask, editTask}) => {
 	)
 }
 
-const Task = ({text, completed, toggleTask, editTask}) => {
+const Task = ({text, completed, toggleTask, editTask, removeTask}) => {
 
 	const [editing, setEditing] = useState(false)
 	const [editText, setEditText] = useState(text)
@@ -68,6 +68,10 @@ const Task = ({text, completed, toggleTask, editTask}) => {
 		setEditing(false)
 	}
 
+	const deleteTask = () => {
+		removeTask(text)
+	}
+
 	const extraClass = completed ? 'completed' : ''
 
 	return (<div className='task-item'>
@@ -84,7 +88,7 @@ const Task = ({text, completed, toggleTask, editTask}) => {
 									<button className='edit-button' onClick={saveText}> ✓</button>
 								</div>)
 							: <span className={`display-text ${extraClass}`} onClick={toggleEditing}>{text}</span>}
-						<button className='delete'>X</button>
+						<button onClick={deleteTask} className='delete'>X</button>
 					</div>)
 }
 

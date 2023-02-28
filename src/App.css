@@ -433,6 +433,20 @@ body {
   outline: 1px solid var(--accent1-light)
 }
 
+.task-item input {
+  font-size: 20px;
+  border: 2px solid black;
+  padding: 4px;
+  margin-right: 4px;
+}
+
+.task-item .edit-button {
+  font-size: 20px;
+  padding: 4px;
+  background-color: white;
+  filter: invert(1)
+}
+
 .task-list .display-text.completed {
   color: grey;
   text-decoration: line-through;

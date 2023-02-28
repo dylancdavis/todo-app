@@ -10,11 +10,11 @@
     {
       "tasks": [
         {
-          "text": "Uh oh",
+          "text": "Start with that",
           "completed": false
         },
         {
-          "text": "Start with that",
+          "text": "Let's go",
           "completed": false
         }
       ],
