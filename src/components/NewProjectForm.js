@@ -30,6 +30,20 @@ const NewProjectForm = ({ onSave, onDiscard }) => {
     setTasks(newTaskList);
   };
 
+  const editTask = async (oldText, newText) => {
+    if (!newText) return;
+    const newTaskList = tasks.map((t) => {
+      return t.text === oldText ? { ...t, text: newText } : t;
+    });
+    setTasks(newTaskList);
+  };
+
+  const removeTask = async (text) => {
+    if (!text) return;
+    const newTaskList = tasks.filter((t) => t.text !== text);
+    setTasks(newTaskList);
+  };
+
   return (
     <div className="project-item unsaved">
       <ProjectHeader>
@@ -38,7 +52,13 @@ const NewProjectForm = ({ onSave, onDiscard }) => {
           handleTitleChange={(e) => setTitle(e.target.value)}
         />
       </ProjectHeader>
-      <ProjectBody tasks={tasks} addTask={addTask} toggleTask={toggleTask} />
+      <ProjectBody
+        tasks={tasks}
+        addTask={addTask}
+        toggleTask={toggleTask}
+        editTask={editTask}
+        removeTask={removeTask}
+      />
       <SaveButton onSave={handleSave} />
       <DiscardButton onDiscard={onDiscard} />
     </div>
