@@ -1,8 +1,8 @@
 import saveIcon from "../assets/check.png";
 import discardIcon from "../assets/cross.png";
 import { useState } from "react";
-import ProjectBody from "./projectBody";
-import ProjectHeader from "./projectHeader";
+import ProjectBody from "./ProjectBody";
+import ProjectHeader from "./ProjectHeader";
 
 const NewProjectForm = ({ onSave, onDiscard }) => {
   const [title, setTitle] = useState("");

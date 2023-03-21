@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import ProjectBody from "./projectBody";
-import ProjectHeader from "./projectHeader";
+import ProjectBody from "./ProjectBody";
+import ProjectHeader from "./ProjectHeader";
 import discardIcon from "../assets/cross.png";
 
 const baseURL = "http://localhost:3001";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import ProjectContainer from "./components/projectContainer";
+import ProjectContainer from "./components/ProjectContainer";
 
 const sidebarItemNames = ["projects"];
 

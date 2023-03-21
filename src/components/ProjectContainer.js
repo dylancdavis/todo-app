@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import NewProjectForm from "./newProjectForm";
-import PlusButton from "./plusButton";
-import ProjectItem from "./projectItem";
+import NewProjectForm from "./NewProjectForm";
+import PlusButton from "./PlusButton";
+import ProjectItem from "./ProjectItem";
 import axios from "axios";
 
 const baseURL = "http://localhost:3001";
@@ -14,13 +14,25 @@ const ProjectContainer = () => {
     setNewProject(true);
   };
 
+  // Fetch projects from the local server
+  useEffect(() => {
+    (async () => {
+      try {
+        const getProjects = await axios.get(`${baseURL}/projects`);
+        setProjects(getProjects.data);
+        if (!getProjects.data.length) setNewProject(true);
+      } catch (e) {
+        window.alert("Unable to fetch projects. Is the local server enabled?");
+      }
+    })();
+  }, []);
+
   const onProjectSave = async ({ title, tasks }) => {
     const taskResponse = await axios.post(`${baseURL}/tasklists`, {
       tasks: tasks,
     });
     const tasklistID = taskResponse.data.id;
 
-    // create tasklist first?
     const projectResponse = await axios.post(`${baseURL}/projects`, {
       title,
       tasks: tasklistID,
@@ -39,16 +51,6 @@ const ProjectContainer = () => {
     await axios.delete(`${baseURL}/tasklists/${tasklist}`);
     setProjects(projects.filter((p) => p.id !== id));
   };
-
-  // use effect to get projects here...
-
-  useEffect(() => {
-    (async () => {
-      const getProjects = await axios.get(`${baseURL}/projects`);
-      setProjects(getProjects.data);
-      if (!getProjects.data.length) setNewProject(true);
-    })();
-  }, []);
 
   return (
     <div id="project-container">
