@@ -8,10 +8,6 @@ const NewProjectForm = ({ onSave, onDiscard }) => {
   const [title, setTitle] = useState("");
   const [tasks, setTasks] = useState([]);
 
-  const onTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-
   const handleSave = () => {
     if (!title) return;
 
@@ -28,8 +24,6 @@ const NewProjectForm = ({ onSave, onDiscard }) => {
   };
 
   const toggleTask = (text) => {
-    console.log("success");
-
     const newTaskList = tasks.map((t) => {
       return t.text === text ? { ...t, completed: !t.completed } : t;
     });
@@ -39,7 +33,10 @@ const NewProjectForm = ({ onSave, onDiscard }) => {
   return (
     <div className="project-item unsaved">
       <ProjectHeader>
-        <Title title={title} handleTitleChange={onTitleChange} />
+        <Title
+          title={title}
+          handleTitleChange={(e) => setTitle(e.target.value)}
+        />
       </ProjectHeader>
       <ProjectBody tasks={tasks} addTask={addTask} toggleTask={toggleTask} />
       <SaveButton onSave={handleSave} />
