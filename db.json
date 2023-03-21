@@ -1,24 +1,4 @@
 {
-  "projects": [
-    {
-      "title": "Name",
-      "tasks": 1,
-      "id": 1
-    }
-  ],
-  "tasklists": [
-    {
-      "tasks": [
-        {
-          "text": "Start with that",
-          "completed": false
-        },
-        {
-          "text": "Let's go",
-          "completed": false
-        }
-      ],
-      "id": 1
-    }
-  ]
+  "projects": [],
+  "tasklists": []
 }
