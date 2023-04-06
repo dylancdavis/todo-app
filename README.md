@@ -13,7 +13,7 @@ To store your first project, you'll need to type something into the box labeled 
 
 Project names cannot be edited once created, but tasks can be edited by clicking directly on them, altering their value, then clicking the checkmark button that appears to the right. Created tasks can be toggled as completed or not by clicking the white box to their left.
 
-##### CoreTask with multiple projects and their tasks
+###### CoreTask with multiple projects and their tasks
 ![coretask-withtasks](https://user-images.githubusercontent.com/104338788/230452446-2b35c692-55eb-4c94-8309-4bbbf12a7175.png)
 
 All of the styling for this application was done with native CSS.
