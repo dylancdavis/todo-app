@@ -36,11 +36,11 @@ const setColors = () => {
   }
   document.body.style.setProperty(
     `--banner-stripe1`,
-    chroma(colors[2]).set("hsl.l", 0.9)
+    chroma(colors[2]).set("hsl.l", 0.92)
   );
   document.body.style.setProperty(
     `--banner-stripe2`,
-    chroma(colors[3]).set("hsl.l", 0.9)
+    chroma(colors[2]).set("hsl.l", 0.97)
   );
 };
 

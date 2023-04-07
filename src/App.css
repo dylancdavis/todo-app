@@ -29,8 +29,8 @@
   --accent3-light: #ffffff;
   --accent4-light: #ffffff;
 
-  --banner-stripe-1: #ffffff;
-  --banner-stripe-2: #ffffff;
+  --banner-stripe1: #ffffff;
+  --banner-stripe2: #ffffff;
 }
 
 /* Remove Defaults */
@@ -79,9 +79,9 @@ a {
   font-family: "Righteous";
   padding-left: 64px;
   border-bottom: 4px solid var(--secondary-color);
-  background-image: repeating-linear-gradient(-45deg, var(--banner-stripe1) 0, var(--banner-stripe2) 3.5px, transparent 0, transparent 50%);
+  background-image: repeating-linear-gradient(-45deg, var(--banner-stripe1) 0, var(--banner-stripe1) 3.5px, transparent 0, transparent 50%);
   background-size: 10px 10px;
-  background-color: var(--banner-stripe-1);
+  background-color: var(--banner-stripe2);
 
 }
 
