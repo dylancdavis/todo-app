@@ -1,7 +1,12 @@
 import { parse } from "coolors-io";
 import chroma from "chroma-js";
 
-const palette = "https://coolors.co/f9fafb-060a0f-6593c2-6eb4a8-f0974e-e8765a";
+let palette = "https://coolors.co/f9fafb-060a0f-6593c2-6eb4a8-f0974e-e8765a";
+
+const setPalette = (paletteURL) => {
+  palette = paletteURL;
+  setColors();
+};
 
 const setColors = () => {
   let colors = parse(palette);
@@ -26,4 +31,5 @@ const setColors = () => {
   }
 };
 
+export { setPalette };
 export default setColors;
