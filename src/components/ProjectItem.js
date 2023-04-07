@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ProjectBody from "./ProjectBody";
 import ProjectHeader from "./ProjectHeader";
 import discardIcon from "../assets/cross.png";
+import tasklistService from "../services/tasklistService";
 
 const baseURL = "http://localhost:3001";
 
@@ -11,14 +12,14 @@ const ProjectItem = ({ id, title, onDelete, tasklist }) => {
 
   useEffect(() => {
     (async () => {
-      const tasks = await axios.get(`${baseURL}/tasklists/${tasklist}`);
-      setTasks(tasks.data.tasks);
+      const tasksResponse = await tasklistService.get(tasklist);
+      setTasks(tasksResponse.tasks);
     })();
   }, [tasklist]);
 
   const addTask = async (newTask) => {
     const newTaskList = tasks.concat(newTask);
-    await axios.put(`${baseURL}/tasklists/${tasklist}`, { tasks: newTaskList });
+    await tasklistService.update(tasklist, newTaskList);
     setTasks(newTaskList);
   };
 
@@ -26,7 +27,7 @@ const ProjectItem = ({ id, title, onDelete, tasklist }) => {
     const newTaskList = tasks.map((t) => {
       return t.text === text ? { ...t, completed: !t.completed } : t;
     });
-    await axios.put(`${baseURL}/tasklists/${tasklist}`, { tasks: newTaskList });
+    await tasklistService.update(tasklist, newTaskList);
     setTasks(newTaskList);
   };
 
@@ -35,14 +36,14 @@ const ProjectItem = ({ id, title, onDelete, tasklist }) => {
     const newTaskList = tasks.map((t) => {
       return t.text === oldText ? { ...t, text: newText } : t;
     });
-    await axios.put(`${baseURL}/tasklists/${tasklist}`, { tasks: newTaskList });
+    await tasklistService.update(tasklist, newTaskList);
     setTasks(newTaskList);
   };
 
   const removeTask = async (text) => {
     if (!text) return;
     const newTaskList = tasks.filter((t) => t.text !== text);
-    await axios.put(`${baseURL}/tasklists/${tasklist}`, { tasks: newTaskList });
+    await tasklistService.update(tasklist, newTaskList);
     setTasks(newTaskList);
   };
 

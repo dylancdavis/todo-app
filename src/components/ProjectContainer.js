@@ -3,6 +3,8 @@ import NewProjectForm from "./NewProjectForm";
 import PlusButton from "./PlusButton";
 import ProjectItem from "./ProjectItem";
 import axios from "axios";
+import projectService from "../services/projectService";
+import tasklistService from "../services/tasklistService";
 
 const baseURL = "http://localhost:3001";
 
@@ -14,31 +16,29 @@ const ProjectContainer = () => {
     setNewProject(true);
   };
 
-  // Fetch projects from the local server
+  // Fetch projects from either local server, or local storage
   useEffect(() => {
     (async () => {
       try {
-        const getProjects = await axios.get(`${baseURL}/projects`);
-        setProjects(getProjects.data);
-        if (!getProjects.data.length) setNewProject(true);
+        const fetchedProjects = await projectService.getAll();
+        setProjects(fetchedProjects);
+        if (!fetchedProjects.length) setNewProject(true);
       } catch (e) {
-        window.alert("Unable to fetch projects. Is the local server enabled?");
+        window.alert(e);
       }
     })();
   }, []);
 
   const onProjectSave = async ({ title, tasks }) => {
-    const taskResponse = await axios.post(`${baseURL}/tasklists`, {
-      tasks: tasks,
-    });
-    const tasklistID = taskResponse.data.id;
+    const taskResponse = await tasklistService.create(tasks);
+    const tasklistID = taskResponse.id;
 
-    const projectResponse = await axios.post(`${baseURL}/projects`, {
+    const projectResponse = await projectService.create({
       title,
       tasks: tasklistID,
     });
 
-    setProjects(projects.concat(projectResponse.data));
+    setProjects(projects.concat(projectResponse));
     setNewProject(false);
   };
 
@@ -46,9 +46,9 @@ const ProjectContainer = () => {
     setNewProject(false);
   };
 
-  const onProjectDelete = async (id, tasklist) => {
-    await axios.delete(`${baseURL}/projects/${id}`);
-    await axios.delete(`${baseURL}/tasklists/${tasklist}`);
+  const onProjectDelete = async (id, tasklistId) => {
+    projectService.remove(id);
+    tasklistService.remove(tasklistId);
     setProjects(projects.filter((p) => p.id !== id));
   };
 
