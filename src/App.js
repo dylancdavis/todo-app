@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { setPalette } from "./logic/colorHandler";
+import { setPalette, initialPalette } from "./logic/colorHandler";
 import "./App.css";
 import ProjectContainer from "./components/ProjectContainer";
 
@@ -46,7 +46,7 @@ const MainContent = () => {
             change colors
           </button>
           <a
-            href="https://coolors.co/f9fafb-060a0f-6593c2-6eb4a8-f0974e-e8765a"
+            href={initialPalette}
             className="sidebar-item"
             target="_blank"
             rel="noreferrer"

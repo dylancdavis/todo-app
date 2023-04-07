@@ -1,7 +1,9 @@
 import { parse } from "coolors-io";
 import chroma from "chroma-js";
 
-let palette = "https://coolors.co/f9fafb-060a0f-6593c2-6eb4a8-f0974e-e8765a";
+const initialPalette = "https://coolors.co/6593c2-6eb4a8-f0974e-e8765a";
+
+let palette = initialPalette;
 
 const setPalette = (paletteURL) => {
   palette = paletteURL;
@@ -9,7 +11,10 @@ const setPalette = (paletteURL) => {
 };
 
 const setColors = () => {
-  let colors = parse(palette);
+  let parsed = parse(palette);
+
+  let colors = ["#f9fafb", "#060a0f", ...parsed];
+  console.log(colors);
 
   document.body.style.setProperty("--primary-color", colors[0]);
   document.body.style.setProperty("--secondary-color", colors[1]);
@@ -28,14 +33,16 @@ const setColors = () => {
       `--accent${i - 1}-dark`,
       chroma(colors[i]).set("hsl.l", 0.1)
     );
-    document.body.style.setProperty(
-      (`--banner-stripe1`, chroma(colors[2].set("hsl.l", 0.4)))
-    );
-    document.body.style.setProperty(
-      (`--banner-stripe2`, chroma(colors[3].set("hsl.l", 0.4)))
-    );
   }
+  document.body.style.setProperty(
+    `--banner-stripe1`,
+    chroma(colors[2]).set("hsl.l", 0.9)
+  );
+  document.body.style.setProperty(
+    `--banner-stripe2`,
+    chroma(colors[3]).set("hsl.l", 0.9)
+  );
 };
 
-export { setPalette };
+export { setPalette, initialPalette };
 export default setColors;
