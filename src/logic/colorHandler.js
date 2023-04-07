@@ -28,6 +28,12 @@ const setColors = () => {
       `--accent${i - 1}-dark`,
       chroma(colors[i]).set("hsl.l", 0.1)
     );
+    document.body.style.setProperty(
+      (`--banner-stripe1`, chroma(colors[2].set("hsl.l", 0.4)))
+    );
+    document.body.style.setProperty(
+      (`--banner-stripe2`, chroma(colors[3].set("hsl.l", 0.4)))
+    );
   }
 };
 

@@ -77,8 +77,8 @@ a {
   padding-left: 64px;
   border-bottom: 4px solid var(--secondary-color);
   background-image: repeating-linear-gradient(-45deg, #edf3ff 0, #edf3ff 3.5px, transparent 0, transparent 50%);
-background-size: 10px 10px;
-background-color: #e3ecfe;
+  background-size: 10px 10px;
+  background-color: #e3ecfe;
   background-color: var(--primary-color-light);
 
 }
