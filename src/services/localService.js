@@ -13,4 +13,4 @@ const ping = async () => {
   }
 };
 
-export { local, ping };
+export { local, ping, baseURL };

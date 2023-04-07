@@ -1,8 +1,6 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { local, ping } from "./localService";
-
-const baseURL = "http://localhost:3001";
+import { local, ping, baseURL } from "./localService";
 
 const getAll = async () => {
   if (local === null) {
