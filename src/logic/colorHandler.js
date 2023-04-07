@@ -3,9 +3,10 @@ import chroma from "chroma-js";
 
 const initialPalette = "https://coolors.co/6593c2-6eb4a8-f0974e-e8765a";
 
-let palette = initialPalette;
+let palette = window.localStorage.getItem("palette") ?? initialPalette;
 
 const setPalette = (paletteURL) => {
+  window.localStorage.setItem("palette", paletteURL);
   palette = paletteURL;
   setColors();
 };
