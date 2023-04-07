@@ -71,7 +71,11 @@ body {
   font-family: "Righteous";
   padding-left: 64px;
   border-bottom: 4px solid var(--secondary-color);
-  background-color: var(--primary-color);
+  background-image: repeating-linear-gradient(-45deg, #edf3ff 0, #edf3ff 3.5px, transparent 0, transparent 50%);
+background-size: 10px 10px;
+background-color: #e3ecfe;
+  background-color: var(--primary-color-light);
+
 }
 
 .banner-text {
@@ -146,17 +150,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background-image: repeating-linear-gradient(
-    45deg,
-    var(--primary-color) 0,
-    var(--primary-color) 5.5px,
-    transparent 0,
-    transparent 50%
-  );
-  background-size: 13px 13px;
-  background-color: var(--primary-color-light);
+
   overflow: scroll;
   max-height: 100%;
+  background-image: repeating-conic-gradient(#ffffff 0% 25%, #ececec 0% 50%);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  background-color: #ececec;
 }
 
 .plus-button {
