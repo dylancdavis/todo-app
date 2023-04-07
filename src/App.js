@@ -28,7 +28,7 @@ const MainContent = () => {
 
   const colorPrompt = () => {
     const userURL = window.prompt(
-      "Enter a coolors.io URL to change the color pallette:"
+      "Enter a coolors.io URL to change the color palette:"
     );
     setPalette(userURL);
   };
