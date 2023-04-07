@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { setPalette, initialPalette } from "./logic/colorHandler";
+import { setPalette, initialPalette, resetPalette } from "./logic/colorHandler";
 import "./App.css";
 import ProjectContainer from "./components/ProjectContainer";
 
@@ -18,6 +18,7 @@ function App() {
 
 const MainContent = () => {
   const [selectedTab, setSelectedTab] = useState("projects");
+  const [showReset, setShowReset] = useState(false);
 
   const setTab = (i) => {
     return () => {
@@ -31,6 +32,12 @@ const MainContent = () => {
       "Enter a coolors.io URL to change the color palette:"
     );
     setPalette(userURL);
+    setShowReset(true);
+  };
+
+  const setDefaultColors = () => {
+    resetPalette();
+    setShowReset(false);
   };
 
   return (
@@ -53,6 +60,11 @@ const MainContent = () => {
           >
             initial palette
           </a>
+          {showReset && (
+            <button className="sidebar-item" onClick={setDefaultColors}>
+              default colors
+            </button>
+          )}
         </div>
       </div>
       {selectedTab === "projects" && <ProjectContainer />}

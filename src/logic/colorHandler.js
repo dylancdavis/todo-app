@@ -11,6 +11,10 @@ const setPalette = (paletteURL) => {
   setColors();
 };
 
+const resetPalette = () => {
+  setPalette(initialPalette);
+};
+
 const setColors = () => {
   let parsed = parse(palette);
 
@@ -45,5 +49,5 @@ const setColors = () => {
   );
 };
 
-export { setPalette, initialPalette };
+export { setPalette, initialPalette, resetPalette };
 export default setColors;
